@@ -31,25 +31,5 @@ def lex(code: str) -> Iterable[Token]:
         value = mo.group()
         if kind == 'COMENT':
             continue
+<<<<<<< HEAD
         yield Token(kind, value)
-
-# exemplos = [
-#     """(#t #f)""",
-#     """(#f)""",
-#     """("uma string bad as")""",
-#     """("hello-world")""",
-#     """("hello_world")""",
-#     """("hello$world")""",
-#     """("hello&world")""",
-#     """("hello_world")""",
-#     """("hello_world")""",
-#     """("!@#$%&*")""",
-#     """('1 2.0 -1 3.14 42.0 +100')""",
-#     """( 'max x y' )""",
-
-# ]
-# for ex in exemplos:
-#     print(ex)
-#     for tok in lex(ex):
-#         print('    ', tok)
-#     print()
