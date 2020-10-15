@@ -31,5 +31,5 @@ def lex(code: str) -> Iterable[Token]:
         value = mo.group()
         if kind == 'COMENT':
             continue
-<<<<<<< HEAD
+        
         yield Token(kind, value)
