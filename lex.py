@@ -17,11 +17,11 @@ def lex(code: str) -> Iterable[Token]:
         ('LPAR', r'\('),
         ('RPAR', r'\)'),
         ('BOOL', r'#[t|f]'),
-        ('NUMBER',   r'(\+|\-)?\d+(\.\d*)?([eE][+-]?\d+)?'),  # Integer or decimal number
+        ('NUMBER',   r'(\+|\-)?\d+(\.\d*)?([eE][+-]?\d+)?'),
         ('STRING', r'\"(.+\'?)\"'),
         ('NAME', r'([^()\"\n \#\;]+)'),
         ('CHAR', r'\#\\(\w|\d)+'),
-        ('COMENT', r'\;\;([\w\ \d \S])+'),
+        ('COMMENT', r'\;([\w\ \d \S])+'),
     ]
     tok_regex = '|'.join('(?P<%s>%s)' % pair for pair in token_specification)
     line_num = 1
@@ -29,7 +29,7 @@ def lex(code: str) -> Iterable[Token]:
     for mo in re.finditer(tok_regex, code):
         kind = mo.lastgroup
         value = mo.group()
-        if kind == 'COMENT':
+        if kind == 'COMMENT':
             continue
         
         yield Token(kind, value)
